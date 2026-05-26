@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.tokenization;
 
@@ -40,7 +39,6 @@ public final class HeuristicTokenizer implements Tokenizer {
 
     //private EntityFinder entityFinder;
     public HeuristicTokenizer() {
-
         analyzers = new LinkedList<>();
         analyzers.add(new Alphanumeric());
         analyzers.add(new Whitespace());
@@ -49,61 +47,15 @@ public final class HeuristicTokenizer implements Tokenizer {
     }
 
     public List<Analyzer> getAnalyzers() {
-        return analyzers;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public void addAnalyzer(Analyzer a) {
-        analyzers.add(a);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public final String[] tokenize(String text) {
-        List<String> tokens = new LinkedList<>();
-        StringBuilder tokenBuffer = new StringBuilder();
-
-        for (int i = 0; i < text.length(); i++) {
-            Model m = new Model(text, i);
-
-            int analysisSkip = 0;
-            int analysisShoulSplit = 0;
-            int analysisShouldNotSplit = 0;
-
-            for (Analyzer analyzer : analyzers) {
-                Analysis analysis = analyzer.analyze(m);
-
-                if (analysis == Analysis.SKIP) {
-                    analysisSkip++;
-                } else if (analysis == Analysis.SHOULD_SPLIT) {
-                    analysisShoulSplit++;
-                } else if (analysis == Analysis.SHOULD_NOT_SPLIT) {
-                    analysisShouldNotSplit++;
-                }
-            }
-
-            if (analysisShoulSplit > 0 && analysisShoulSplit >= analysisShouldNotSplit) {
-                if (m.getCurrentChar() != ' ') {
-                    if (tokenBuffer.length() > 0) {
-                        tokens.add(tokenBuffer.toString());
-                        tokenBuffer = new StringBuilder();
-                    }
-
-                    tokenBuffer.append(m.getCurrentChar());
-                } else {
-                    if (tokenBuffer.length() > 0) {
-                        tokens.add(tokenBuffer.toString());
-                        tokenBuffer = new StringBuilder();
-                    }
-                }
-            } else {
-                tokenBuffer.append(m.getCurrentChar());
-            }
-        }
-
-        if (tokenBuffer.length() > 0) {
-            tokens.add(tokenBuffer.toString());
-        }
-
-        return tokens.toArray(new String[]{});
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

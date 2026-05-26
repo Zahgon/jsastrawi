@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.tokenization.analyzer;
 
@@ -33,7 +32,6 @@ public final class Alphanumeric implements Analyzer {
 
     static {
         String tmp = "abcdefghijklmnopqrstuvwxyz1234567890";
-
         alphanumericChars = new HashSet();
         for (char c : tmp.toCharArray()) {
             alphanumericChars.add(c);
@@ -44,36 +42,15 @@ public final class Alphanumeric implements Analyzer {
     }
 
     static boolean isAlphanumeric(char c) {
-        return alphanumericChars.contains((Character) c);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     static boolean prevCharIsDash(Model m) {
-        if (m.getPrevChar() == '-') {
-            int prev2 = m.getCharPos() - 2;
-
-            if (prev2 > 0 && m.getText().charAt(prev2) == '-') {
-                return true;
-            }
-        }
-
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public Analysis analyze(final Model m) {
-        if (isAlphanumeric(m.getCurrentChar())
-                && (m.hasPrevChar() && m.getCurrentChar() == m.getPrevChar())
-                || (m.hasPrevChar() && m.getPrevChar() == '-')
-                && !prevCharIsDash(m)) {
-            return Analysis.SHOULD_NOT_SPLIT;
-        } else if (isAlphanumeric(m.getCurrentChar())
-                && (m.hasPrevChar() && !isAlphanumeric(m.getPrevChar()))) {
-            return Analysis.SHOULD_SPLIT;
-        } else if (isAlphanumeric(m.getCurrentChar()) && !m.hasPrevChar()) {
-            return Analysis.SHOULD_SPLIT;
-        }
-
-        return Analysis.SKIP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

@@ -3,3 +3,7 @@
 /.nb-gradle/
 /.nb-gradle-properties
 /target/
+.aider*
+logs/
+.commit0_scripts/
+.github/workflows/

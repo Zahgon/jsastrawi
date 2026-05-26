@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.morphology.defaultimpl;
 
@@ -60,27 +59,26 @@ public class RemovalImpl implements Removal {
 
     @Override
     public ContextVisitor getVisitor() {
-        return visitor;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String getSubject() {
-        return subject;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String getResult() {
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String getRemovedPart() {
-        return removedPart;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String getAffixType() {
-        return affixType;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.tokenization.analyzer;
 
@@ -35,43 +34,34 @@ public class Model {
     public Model(final String text, final int charPos) {
         this.text = text;
         this.charPos = charPos;
-
         currentChar = this.text.charAt(charPos);
     }
 
     public String getText() {
-        return text;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public int getCharPos() {
-        return charPos;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public char getCurrentChar() {
-        return currentChar;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public char getNextChar() {
-        if (charPos < this.text.length() - 1) {
-            return this.text.charAt(charPos + 1);
-        } else {
-            throw new IndexOutOfBoundsException();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean hasNextChar() {
-        return charPos < this.text.length() - 1;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public char getPrevChar() {
-        if (charPos > 0) {
-            return this.text.charAt(charPos - 1);
-        } else {
-            throw new IndexOutOfBoundsException();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public boolean hasPrevChar() {
-        return charPos > 0;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.cli.output;
 
@@ -31,12 +30,11 @@ public class SystemOutput implements Output {
 
     @Override
     public void println(String x) {
-        System.out.println(x);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void print(String x) {
-        System.out.print(x);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

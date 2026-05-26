@@ -20,173 +20,80 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.util;
 
 public final class StringUtil {
 
     public static boolean isWhitespace(char c) {
-        return c == ' ' || c == '\t' || c == '\n';
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static boolean isWhitespace(String s) {
-        return " ".equals(s) || "\t".equals(s) || "\n".equals(s);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static int getNextWhitespace(String s, int start) {
-        int i = start;
-
-        while ((i < s.length() - 1) && !isWhitespace(s.charAt(i + 1))) {
-            i++;
-        }
-
-        if (i == s.length() - 1) {
-            throw new IndexOutOfBoundsException();
-        }
-
-        i++;
-
-        return i;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static int getNextWhitespace(String s) {
-        return getNextWhitespace(s, -1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static boolean hasNextWhitespace(String s, int start) {
-        int i = start;
-
-        while ((i < s.length() - 1) && !isWhitespace(s.charAt(i + 1))) {
-            i++;
-        }
-
-        if (i == s.length() - 1) {
-            return false;
-        }
-
-        i++;
-
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static boolean hasNextWhitespace(String s) {
-        return hasNextWhitespace(s, -1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static int getPrevWhitespace(String s, int start) {
-        int i = start;
-
-        while (i > 0 && !isWhitespace(s.charAt(i - 1))) {
-            i--;
-        }
-
-        if (i == 0) {
-            throw new IndexOutOfBoundsException();
-        }
-
-        i--;
-
-        return i;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static int getPrevWhitespace(String s) {
-        return getPrevWhitespace(s, s.length());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static boolean hasPrevWhitespace(String s, int start) {
-        int i = start;
-
-        while (i > 0 && !isWhitespace(s.charAt(i - 1))) {
-            i--;
-        }
-
-        if (i == 0) {
-            return false;
-        }
-
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static boolean hasPrevWhitespace(String s) {
-        return hasPrevWhitespace(s, s.length());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static int getNextNonWhitespace(String s, int start) {
-        int i = start;
-
-        while ((i < s.length() - 1) && isWhitespace(s.charAt(i + 1))) {
-            i++;
-        }
-
-        if (i == s.length() - 1) {
-            throw new IndexOutOfBoundsException();
-        }
-
-        i++;
-
-        return i;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static int getNextNonWhitespace(String s) {
-        return getNextNonWhitespace(s, -1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static boolean hasNextNonWhitespace(String s, int start) {
-        int i = start;
-
-        while ((i < s.length() - 1) && isWhitespace(s.charAt(i + 1))) {
-            i++;
-        }
-
-        if (i == s.length() - 1) {
-            return false;
-        }
-
-        i++;
-
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static boolean hasNextNonWhitespace(String s) {
-        return hasNextNonWhitespace(s, -1);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static int getPrevNonWhitespace(String s, int start) {
-        int i = start;
-
-        while (i > 0 && isWhitespace(s.charAt(i - 1))) {
-            i--;
-        }
-
-        if (i == 0) {
-            throw new IndexOutOfBoundsException();
-        }
-
-        i--;
-
-        return i;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static int getPrevNonWhitespace(String s) {
-        return getPrevNonWhitespace(s, s.length());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static boolean hasPrevNonWhitespace(String s, int start) {
-        int i = start;
-
-        while (i > 0 && isWhitespace(s.charAt(i - 1))) {
-            i--;
-        }
-
-        if (i == 0) {
-            return false;
-        }
-
-        return true;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     public static boolean hasPrevNonWhitespace(String s) {
-        return hasPrevNonWhitespace(s, s.length());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

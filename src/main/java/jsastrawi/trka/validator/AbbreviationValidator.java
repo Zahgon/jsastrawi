@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.trka.validator;
 
@@ -35,12 +34,11 @@ public final class AbbreviationValidator implements Validator {
     }
 
     public Set<String> getAbbreviations() {
-        return abbreviations;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public boolean isValid(String s) {
-        return abbreviations.contains(s);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

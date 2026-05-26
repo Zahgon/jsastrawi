@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.morphology.defaultimpl.visitor;
 
@@ -39,43 +38,24 @@ public abstract class AbstractDisambiguatePrefixRule implements ContextVisitor {
 
     @Override
     public void visit(Context context) {
-        String result = null;
-
-        for (Disambiguator disambiguator : disambiguators) {
-            result = disambiguator.disambiguate(context.getCurrentWord());
-
-            if (context.getDictionary().contains(result)) {
-                break;
-            }
-        }
-
-        if (null == result || result.equals(context.getCurrentWord())) {
-            return;
-        }
-
-        String removedPart = context.getCurrentWord().replace(result, "");
-        Removal removal = new RemovalImpl(this, context.getCurrentWord(), result, removedPart, "DP");
-        context.addRemoval(removal);
-        context.setCurrentWord(result);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
      * Add disambiguator
-     * 
+     *
      * @param disambiguator disambiguator
      */
     public void addDisambiguator(Disambiguator disambiguator) {
-        disambiguators.add(disambiguator);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
      * Add many disambiguators at once
-     * 
+     *
      * @param disambiguators a collection of disambiguators
      */
     public void addDisambiguators(Collection<Disambiguator> disambiguators) {
-        for (Disambiguator disambiguator : disambiguators) {
-            this.disambiguators.add(disambiguator);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

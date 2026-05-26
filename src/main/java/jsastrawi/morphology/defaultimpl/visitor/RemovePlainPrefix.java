@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.morphology.defaultimpl.visitor;
 
@@ -35,15 +34,7 @@ class RemovePlainPrefix implements ContextVisitor {
 
     @Override
     public void visit(Context context) {
-        String result = remove(context.getCurrentWord());
-
-        if (!result.equals(context.getCurrentWord())) {
-            String removedPart = context.getCurrentWord().replaceFirst(result, "");
-
-            Removal r = new RemovalImpl(this, context.getCurrentWord(), result, removedPart, "DP");
-            context.addRemoval(r);
-            context.setCurrentWord(result);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -53,7 +44,6 @@ class RemovePlainPrefix implements ContextVisitor {
      * @return word after the plain prefix has been removed
      */
     public String remove(String word) {
-        return word.replaceAll("^(di|ke|se)", "");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

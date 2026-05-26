@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.cli;
 
@@ -43,16 +42,7 @@ public class Main {
      * @throws IOException IOException
      */
     public static void main(String[] args) throws IOException {
-        if (args.length == 0) {
-            printHelp();
-        } else if (args[0].toLowerCase().equals("lemmatize")) {
-            Output bufferedOutput = new BufferedOutput();
-            LemmatizeCmd lemmatizeCmd = new LemmatizeCmd(bufferedOutput);
-            lemmatizeCmd.handle(removeCommandFromArgs(args));
-            System.out.print(bufferedOutput.toString());
-        } else {
-            printHelp();
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -73,10 +63,6 @@ public class Main {
      * @return a new array of arguments after the command has been removed
      */
     static String[] removeCommandFromArgs(String[] args) {
-        List<String> largs = new ArrayList<>(Arrays.asList(args));
-        if (largs.size() > 0) {
-            largs.remove(0);
-        }
-        return largs.toArray(new String[0]);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

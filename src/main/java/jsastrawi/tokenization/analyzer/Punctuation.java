@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.tokenization.analyzer;
 
@@ -34,7 +33,6 @@ public final class Punctuation implements Analyzer {
     static {
         punctuations = new HashSet();
         char[] tmp = ",.;:?!\"()\'[]+=*&^%$#@~`{}\\|><".toCharArray();
-
         for (char c : tmp) {
             punctuations.add(c);
         }
@@ -42,18 +40,10 @@ public final class Punctuation implements Analyzer {
 
     @Override
     public Analysis analyze(final Model m) {
-        if (isPunctuation(m.getCurrentChar())
-                && m.hasPrevChar() && m.getCurrentChar() == m.getPrevChar()) {
-            return Analysis.SHOULD_NOT_SPLIT;
-        } else if (isPunctuation(m.getCurrentChar())) {
-            return Analysis.SHOULD_SPLIT;
-        }
-
-        return Analysis.SKIP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     static boolean isPunctuation(char c) {
-        return punctuations.contains(c);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

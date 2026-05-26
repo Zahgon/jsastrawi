@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.cli.output;
 
@@ -33,17 +32,16 @@ public class BufferedOutput implements Output {
 
     @Override
     public void println(String x) {
-        buffer.append(x);
-        buffer.append("\n");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public void print(String x) {
-        buffer.append(x);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        return buffer.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

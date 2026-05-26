@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.trka.validator;
 
@@ -30,17 +29,6 @@ public final class UrlValidator implements Validator {
 
     @Override
     public boolean isValid(String s) {
-        if (s.matches("^.*://.*$")) {
-            return org.apache.commons.validator.routines.UrlValidator.getInstance().isValid(s);
-        } else {
-            String[] parts = s.split("/");
-
-            if (parts.length > 1) {
-                return DomainValidator.getInstance().isValid(parts[0]);
-            }
-        }
-
-        return DomainValidator.getInstance().isValid(s);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

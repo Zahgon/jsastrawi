@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.morphology.defaultimpl;
 
@@ -39,14 +38,23 @@ import jsastrawi.morphology.defaultimpl.visitor.VisitorProvider;
 public class Context {
 
     private final String originalWord;
+
     private String currentWord;
+
     private final Set<String> dictionary;
+
     private final VisitorProvider visitorProvider;
+
     private List<Removal> removals;
+
     private String result;
+
     private final List<ContextVisitor> visitors;
+
     private final List<ContextVisitor> suffixVisitors;
+
     private final List<ContextVisitor> prefixVisitors;
+
     private boolean processIsStopped;
 
     /**
@@ -62,7 +70,6 @@ public class Context {
         this.dictionary = dictionary;
         this.visitorProvider = visitorProvider;
         this.removals = new LinkedList<>();
-
         this.visitors = visitorProvider.getVisitors();
         this.suffixVisitors = visitorProvider.getSuffixVisitors();
         this.prefixVisitors = visitorProvider.getPrefixVisitors();
@@ -74,7 +81,7 @@ public class Context {
      * @return original word
      */
     public String getOriginalWord() {
-        return originalWord;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -83,7 +90,7 @@ public class Context {
      * @param currentWord current word
      */
     public void setCurrentWord(String currentWord) {
-        this.currentWord = currentWord;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -92,7 +99,7 @@ public class Context {
      * @return current word
      */
     public String getCurrentWord() {
-        return currentWord;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -101,7 +108,7 @@ public class Context {
      * @param r removal
      */
     public void addRemoval(Removal r) {
-        removals.add(r);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -110,7 +117,7 @@ public class Context {
      * @return removals
      */
     public List<Removal> getRemovals() {
-        return removals;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -119,43 +126,29 @@ public class Context {
      * @return result
      */
     public String getResult() {
-        return result;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
      * Execute lemmatization process
      */
     public void execute() {
-        // step 1 - 5
-        startStemmingProcess();
-
-        // step 6
-        if (dictionary.contains(currentWord)) {
-            result = currentWord;
-        } else {
-            result = originalWord;
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void startStemmingProcess() {
-
         // step 1
         if (dictionary.contains(currentWord)) {
             return;
         }
-
         if (currentWord.length() <= 3) {
             return;
         }
-
         acceptVisitors(visitors);
-
         if (dictionary.contains(currentWord)) {
             return;
         }
-
         PrecedenceAdjustmentSpec spec = new PrecedenceAdjustmentSpec();
-
         /*
          * Confix Stripping
          * Try to remove prefix before suffix if the specification is met
@@ -166,7 +159,6 @@ public class Context {
             if (dictionary.contains(currentWord)) {
                 return;
             }
-
             // step 2, 3
             removeSuffixes();
             if (dictionary.contains(currentWord)) {
@@ -178,35 +170,29 @@ public class Context {
                 removals.clear();
             }
         }
-
         // step 2, 3
         removeSuffixes();
         if (dictionary.contains(currentWord)) {
             return;
         }
-
         // step 4, 5
         removePrefixes();
         if (dictionary.contains(currentWord)) {
             return;
         }
-
         loopPengembalianAkhiran();
     }
 
     private String acceptVisitors(List<ContextVisitor> visitors) {
         for (ContextVisitor visitor : visitors) {
             accept(visitor);
-
             if (dictionary.contains(currentWord)) {
                 return currentWord;
             }
-
             if (processIsStopped) {
                 return currentWord;
             }
         }
-
         return currentWord;
     }
 
@@ -229,18 +215,14 @@ public class Context {
 
     private void acceptPrefixVisitors(List<ContextVisitor> prefixVisitors) {
         int removalCount = removals.size();
-
         for (ContextVisitor visitor : prefixVisitors) {
             accept(visitor);
-
             if (dictionary.contains(currentWord)) {
                 return;
             }
-
             if (processIsStopped) {
                 return;
             }
-
             if (removals.size() > removalCount) {
                 return;
             }
@@ -253,43 +235,36 @@ public class Context {
      * @return dictionary
      */
     public Set<String> getDictionary() {
-        return dictionary;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private void loopPengembalianAkhiran() {
         // restore prefix to form [DP+[DP+[DP]]] + Root word
         restorePrefix();
-
         List<Removal> originalRemovals = removals;
         LinkedList<Removal> reversedRemovals = new LinkedList<>(removals);
         Collections.reverse(reversedRemovals);
         String originalCurrentWord = currentWord;
-
         for (Removal removal : reversedRemovals) {
             if (!isSuffixRemoval(removal)) {
                 continue;
             }
-
             if (removal.getRemovedPart().equals("kan")) {
                 setCurrentWord(removal.getResult() + "k");
-
                 // step 4, 5
                 removePrefixes();
                 if (dictionary.contains(currentWord)) {
                     return;
                 }
-
                 setCurrentWord(removal.getResult() + "kan");
             } else {
                 setCurrentWord(removal.getSubject());
             }
-
             // step 4, 5
             removePrefixes();
             if (dictionary.contains(currentWord)) {
                 return;
             }
-
             this.removals = originalRemovals;
             setCurrentWord(originalCurrentWord);
         }
@@ -302,7 +277,6 @@ public class Context {
                 break;
             }
         }
-
         ListIterator<Removal> iter = removals.listIterator();
         while (iter.hasNext()) {
             if (iter.next().getAffixType().equals("DP")) {
@@ -312,8 +286,6 @@ public class Context {
     }
 
     private boolean isSuffixRemoval(Removal removal) {
-        return removal.getAffixType().equals("DS")
-                || removal.getAffixType().equals("PP")
-                || removal.getAffixType().equals("P");
+        return removal.getAffixType().equals("DS") || removal.getAffixType().equals("PP") || removal.getAffixType().equals("P");
     }
 }

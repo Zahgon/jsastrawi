@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.morphology.defaultimpl.visitor.prefixrules;
 
@@ -43,11 +42,6 @@ public class PrefixRule14 implements Disambiguator {
 
     @Override
     public String disambiguate(String word) {
-        Matcher matcher = Pattern.compile("^men([cdjstz])(.*)$").matcher(word);
-        if (matcher.find()) {
-            return matcher.group(1) + matcher.group(2);
-        }
-
-        return word;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.tokenization.analyzer;
 
@@ -33,7 +32,6 @@ public final class Hyphen implements Analyzer {
 
     static {
         String tmp = "abcdefghijklmnopqrstuvwxyz";
-
         alphabetChars = new HashSet();
         for (char c : tmp.toCharArray()) {
             alphabetChars.add(c);
@@ -44,22 +42,11 @@ public final class Hyphen implements Analyzer {
     }
 
     static boolean isAlphabet(char c) {
-        return alphabetChars.contains((Character) c);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public Analysis analyze(final Model m) {
-        if (m.getCurrentChar() == '-') {
-            // don't split dash
-            if (m.hasNextChar() && m.getNextChar() == '-') {
-                return Analysis.SHOULD_SPLIT;
-            } else if (m.hasPrevChar() && isAlphabet(m.getPrevChar())
-                    && m.hasNextChar() && isAlphabet(m.getNextChar())) {
-                return Analysis.SHOULD_NOT_SPLIT;
-            }
-        }
-
-        return Analysis.SKIP;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

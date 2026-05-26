@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.cli;
 
@@ -76,7 +75,7 @@ public class LemmatizeCmd {
      * @return output object.
      */
     public Output getOutput() {
-        return output;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -86,56 +85,14 @@ public class LemmatizeCmd {
      * @throws IOException IOException
      */
     public void handle(String[] args) throws IOException {
-        Options options = buildOptions();
-        CommandLineParser parser = new DefaultParser();
-
-        try {
-            CommandLine cmd = parser.parse(options, args);
-
-            if (args.length == 0 || cmd.hasOption("h")) {
-                HelpFormatter formatter = new HelpFormatter();
-                formatter.printHelp("lemmatize [args...] WORD...", options);
-            } else {
-                Set<String> dictionary;
-
-                if (cmd.hasOption('d')) {
-                    dictionary = getDictionaryFromFile(cmd.getOptionValue('d'));
-                } else {
-                    dictionary = getDefaultDictionary();
-                }
-
-                Lemmatizer l = new DefaultLemmatizer(dictionary);
-
-                if (cmd.hasOption("tb")) {
-                    Map<String, String> map = scanTestBedMapFromFile(cmd.getOptionValue("tb"));
-                    runTestBed(map, l);
-                } else if (!cmd.getArgList().isEmpty()) {
-                    for (String word : cmd.getArgs()) {
-                        output.println(l.lemmatize(word));
-                    }
-                }
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(LemmatizeCmd.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private Options buildOptions() {
         Options options = new Options();
-        options.addOption(Option.builder("d")
-                .longOpt("dictionary")
-                .desc("The path of dictionary file. If not specified, the default dictionary will be used.")
-                .hasArg()
-                .argName("FILE")
-                .build());
-        options.addOption(Option.builder("tb")
-                .longOpt("testbed")
-                .desc("Run a testbed against a csv file. The expected format is word,lemma.")
-                .hasArg()
-                .argName("FILE")
-                .build());
+        options.addOption(Option.builder("d").longOpt("dictionary").desc("The path of dictionary file. If not specified, the default dictionary will be used.").hasArg().argName("FILE").build());
+        options.addOption(Option.builder("tb").longOpt("testbed").desc("Run a testbed against a csv file. The expected format is word,lemma.").hasArg().argName("FILE").build());
         options.addOption("h", "help", false, "This help.");
-
         return options;
     }
 
@@ -145,7 +102,6 @@ public class LemmatizeCmd {
         FileReader fr = new FileReader(f);
         BufferedReader br = new BufferedReader(fr);
         fillSet(dictionary, br);
-
         return dictionary;
     }
 
@@ -154,7 +110,6 @@ public class LemmatizeCmd {
         InputStream in = LemmatizeCmd.class.getResourceAsStream("/root-words.txt");
         BufferedReader br = new BufferedReader(new InputStreamReader(in));
         fillSet(dictionary, br);
-
         return dictionary;
     }
 
@@ -166,50 +121,14 @@ public class LemmatizeCmd {
     }
 
     void runTestBed(Map<String, String> testbed, Lemmatizer lemmatizer) {
-        int successCount = 0;
-        int failedCount = 0;
-        float successRate = 0;
-        Map<String, String> failures = new HashMap<>();
-        Map<String, String> actuals = new HashMap<>();
-
-        for (Map.Entry<String, String> entry : testbed.entrySet()) {
-            String lemma = lemmatizer.lemmatize(entry.getKey());
-            if (lemma.equals(entry.getValue())) {
-                successCount++;
-            } else {
-                failedCount++;
-                failures.put(entry.getKey(), entry.getValue());
-                actuals.put(entry.getKey(), lemma);
-            }
-        }
-
-        if (testbed.size() > 0) {
-            successRate = (float) successCount * 100 / testbed.size();
-        }
-
-        output.println("Total test : " + testbed.size());
-        output.println("Success : " + successCount);
-        output.println("Failed : " + failedCount);
-        output.println("Success rate : " + successRate + "%");
-
-        if (failedCount > 0) {
-            output.println("Failures:");
-            int idx = 0;
-            for (Map.Entry<String, String> entry : failures.entrySet()) {
-
-                output.println("[" + idx + "] word: " + entry.getKey() + ", expected: " + entry.getValue() + ", actual: " + actuals.get(entry.getKey()));
-                idx++;
-            }
-        }
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     private Map<String, String> scanTestBedMapFromFile(String filePath) throws FileNotFoundException, IOException {
         Map<String, String> map = new HashMap<>();
-
         File f = new File(filePath);
         FileReader fr = new FileReader(f);
         BufferedReader reader = new BufferedReader(fr);
-
         String line;
         while ((line = reader.readLine()) != null) {
             String[] split = line.split(",");
@@ -217,7 +136,6 @@ public class LemmatizeCmd {
                 map.put(split[0], split[1]);
             }
         }
-
         return map;
     }
 }

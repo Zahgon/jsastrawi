@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.morphology.defaultimpl.confixstripping;
 
@@ -28,31 +27,17 @@ import jsastrawi.specification.Specification;
 
 /**
  * Precedence Adjustment Specification as in confix stripping algorithm.
- * 
+ *
  * <p>
  * Asian J. 2007. Effective Techniques for Indonesian Text Retrieval. page 78.
  * </p>
  */
 public class PrecedenceAdjustmentSpec implements Specification<String> {
 
-    private String[] regexRules = {
-        "^be(.*)lah$",
-        "^be(.*)an$",
-        "^me(.*)i$",
-        "^di(.*)i$",
-        "^pe(.*)i$",
-        "^ter(.*)i$"
-    };
+    private String[] regexRules = { "^be(.*)lah$", "^be(.*)an$", "^me(.*)i$", "^di(.*)i$", "^pe(.*)i$", "^ter(.*)i$" };
 
     @Override
     public boolean isSatisfiedBy(String word) {
-        for (String rule : regexRules) {
-            if (word.matches(rule)) {
-                return true;
-            }
-        }
-
-        return false;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

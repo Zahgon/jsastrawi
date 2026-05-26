@@ -20,7 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 package jsastrawi.trka.validator;
 
@@ -30,9 +29,6 @@ public final class NumberValidator implements Validator {
 
     @Override
     public boolean isValid(String s) {
-        String x = s.replace(" ", "").replace(".", "")
-                .replace(",", "").replace("-", "");
-        return IntegerValidator.getInstance().isValid(x);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }
